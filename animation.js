@@ -7,10 +7,10 @@ function setup() {
 }
 
 function draw() {
-  draw_square();
+  draw_triangle();
 }
 
-function draw_square(p1,p2,p3,p4){
+function draw_triangle(p1,p2,p3){
   
   
   //DO Magic, to convert 3D coordinates into 2D
@@ -27,5 +27,5 @@ function draw_square(p1,p2,p3,p4){
   
   stroke('#5EDBA5');
   strokeWeight(3);
-  quad(38, 31, 86, 20, 69, 63, 30, 76);
+  triangle(38, 31, 86, 20, 69, 63);
 }

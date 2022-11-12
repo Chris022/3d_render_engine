@@ -1,10 +1,10 @@
 {
-  "name": "experimenting_js_frontent_framework",
+  "name": "one-point",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "tsc",
     "watch": "webpack --watch",
     "serve": "webpack serve --open"
   },

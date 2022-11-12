@@ -31,3 +31,8 @@ export type Scene2D = Shape2D[]
 export let Scene2D = (shapes:Shape2D[]) => {
     return [shapes]
 }
+
+export type Options = {fix_size:number,canvas:HTMLCanvasElement,context:CanvasRenderingContext2D}
+export let Options = (fix_size:number,canvas:HTMLCanvasElement,context:CanvasRenderingContext2D) : Options => {
+    return {fix_size:fix_size,canvas:canvas,context:context};
+}

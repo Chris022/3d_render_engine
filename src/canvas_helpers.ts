@@ -1,19 +1,21 @@
-export let scale_canvas = (canvas: HTMLCanvasElement,context:CanvasRenderingContext2D,fixed_size: number) : void => {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+import { Options } from "./types";
 
-    context.setTransform(1, 0, 0, 1, 0, 0);
-    context.translate(canvas.width / 2, canvas.height / 2);
+export let scale_canvas = (options:Options) : void => {
+    options.canvas.width = options.canvas.clientWidth;
+    options.canvas.height = options.canvas.clientHeight;
 
-    context.scale(canvas.height/fixed_size,canvas.height/fixed_size)
+    options.context.setTransform(1, 0, 0, 1, 0, 0);
+    options.context.translate(options.canvas.width / 2, options.canvas.height / 2);
+
+    options.context.scale(options.canvas.height/options.fix_size,options.canvas.height/options.fix_size)
     
-    context.scale(1,-1);
+    options.context.scale(1,-1);
 }
 
-export let get_width = (canvas:HTMLCanvasElement,fixed_size: number):number => {
-    return canvas.width*fixed_size/canvas.height
+export let get_width = (options:Options):number => {
+    return options.canvas.width*options.fix_size/options.canvas.height
 }
 
-export let get_height = (canvas:HTMLCanvasElement,fixed_size: number):number => {
-    return fixed_size
+export let get_height = (options:Options):number => {
+    return options.fix_size
 }

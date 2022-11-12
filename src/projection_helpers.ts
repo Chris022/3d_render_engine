@@ -14,6 +14,22 @@ let no_points_behind_projection_plane = (point:Point3D,projection_distance:numbe
     }
     return point;
 }
+//
+let get_biggest_z_value_of_shape = (shape:Shape3D):number => {
+    var biggest_z = 0;
+    shape.edges.forEach(edge => {
+      if(edge.z > biggest_z) biggest_z = edge.z
+    })
+    return biggest_z;
+}
+
+//Compare function for sorting objects by visibility (objects to the front after objects to the back)
+let compare_shapes_by_z = (shape1:Shape3D,shape2:Shape3D) : number => {
+    if(get_biggest_z_value_of_shape(shape1) < get_biggest_z_value_of_shape(shape2)) return 1;
+    if(get_biggest_z_value_of_shape(shape1) > get_biggest_z_value_of_shape(shape2)) return -1;
+    return 0;
+}
+
 
 export let convert_Scene3D_to_Scene2D = (scene:Scene3D,projection_distance:number): Scene2D => {
     //Start by ordering the shapes in the scene by their biggest z value (biggest to lowest)
@@ -35,20 +51,4 @@ export let convert_Scene3D_to_Scene2D = (scene:Scene3D,projection_distance:numbe
         scene_2D.push(shape_2d)
     })
     return scene_2D;
-}
-
-//
-let get_biggest_z_value_of_shape = (shape:Shape3D):number => {
-    var biggest_z = 0;
-    shape.edges.forEach(edge => {
-      if(edge.z > biggest_z) biggest_z = edge.z
-    })
-    return biggest_z;
-}
-
-//Compare function for sorting objects by visibility (objects to the front after objects to the back)
-let compare_shapes_by_z = (shape1:Shape3D,shape2:Shape3D) : number => {
-    if(get_biggest_z_value_of_shape(shape1) < get_biggest_z_value_of_shape(shape2)) return 1;
-    if(get_biggest_z_value_of_shape(shape1) > get_biggest_z_value_of_shape(shape2)) return -1;
-    return 0;
 }

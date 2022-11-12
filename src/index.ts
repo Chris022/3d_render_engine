@@ -1,6 +1,6 @@
-import { Point3D, Point2D, Shape3D, Shape2D, Scene3D, Scene2D, Material } from "./types"
-import {fill_shape2D} from "./draw_helpers"
-import { convert_Scene3D_to_Scene2D } from "./projection_helpers";
+import { Point3D, Point2D, Shape3D, Shape2D, Scene3D, Scene2D, Material, Options } from "./types"
+import { draw_scene3D } from "./draw_helpers"
+
 import { get_height, get_width, scale_canvas } from "./canvas_helpers";
 import { move_shape3D } from "./shape_helpers";
 import { OutlineMaterialGlow,OutlineMaterial } from "./material_helpers";
@@ -11,10 +11,13 @@ if(!canvas) throw new Error("Canvas is null");
 let context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
 let fix_size = 400;
+
+let options = Options(fix_size,canvas,context)
+
 function init(){
-    scale_canvas(canvas,context,fix_size);
+    scale_canvas(options);
     window.onresize = () => { 
-        scale_canvas(canvas,context,fix_size);
+        scale_canvas(options);
     }
 }
 let move = 600;
@@ -39,14 +42,7 @@ function loop(delta:number){
         }
     }
 
-    //Convert into Shape2D
-    let scene2D = convert_Scene3D_to_Scene2D(scene1,100);
-
-    context.clearRect(-get_width(canvas,fix_size)/2, -get_height(canvas,fix_size)/2, get_width(canvas,fix_size), get_height(canvas,fix_size));
-    scene2D.forEach(shape2D =>{
-        fill_shape2D(context,shape2D);
-    })
-
+    draw_scene3D(options,scene1)
     
     if(move > 650){
         move = 600;

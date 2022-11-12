@@ -1,8 +1,10 @@
+import { Point3D, Point2D, Shape3D, Shape2D, Scene3D, Scene2D } from "./types"
+
 //Takes the z position of the Projection Plane and a 3D Point and converts it to a 2DPoint on the Projection Plane
 let convert_Point3D_to_Point2D = (point:Point3D,projection_distance:number): Point2D => {
     let new_y = point.y * projection_distance/point.z;
     let new_x = point.x * projection_distance/point.z;
-    return Point2D(new_y,new_x);
+    return Point2D(new_x,new_y);
 }
 
 //Takes a 3DPoint and sets it to the minimum Z value if it is behind the Projection Plane (= projection distance)
@@ -13,7 +15,7 @@ let no_points_behind_projection_plane = (point:Point3D,projection_distance:numbe
     return point;
 }
 
-let convert_Scene3D_to_Scene2D = (scene:Scene3D,projection_distance:number): Scene2D => {
+export let convert_Scene3D_to_Scene2D = (scene:Scene3D,projection_distance:number): Scene2D => {
     //Start by ordering the shapes in the scene by their biggest z value (biggest to lowest)
     // --> has to be done so that objects behind of other objects are not visible
     var sorted_scene = [...scene].sort(compare_shapes_by_z);

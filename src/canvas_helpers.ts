@@ -1,6 +1,6 @@
 import { Options } from "./types";
 
-export let scale_canvas = (options:Options) : void => {
+export let init_canvas = (options:Options) : void => {
     options.canvas.width = options.canvas.clientWidth;
     options.canvas.height = options.canvas.clientHeight;
 

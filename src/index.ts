@@ -1,7 +1,7 @@
 import { Point3D, Point2D, Shape3D, Shape2D, Scene3D, Scene2D, Material, Options } from "./types"
 import { draw_scene3D } from "./draw_helpers"
 
-import { get_height, get_width, scale_canvas } from "./canvas_helpers";
+import { get_height, get_width, init_canvas } from "./canvas_helpers";
 import { move_shape3D } from "./shape_helpers";
 import { OutlineMaterialGlow,OutlineMaterial } from "./material_helpers";
 
@@ -15,9 +15,9 @@ let fix_size = 400;
 let options = Options(fix_size,canvas,context)
 
 function init(){
-    scale_canvas(options);
+    init_canvas(options);
     window.onresize = () => { 
-        scale_canvas(options);
+        init_canvas(options);
     }
 }
 let move = 600;

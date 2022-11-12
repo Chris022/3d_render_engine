@@ -1,11 +1,8 @@
 import { Shape2D } from "./types";
 
 
-export let fill_shape2D = (context:CanvasRenderingContext2D, shape:Shape2D,fill_color:string,stroke_color:string) : CanvasRenderingContext2D => {
-    context.fillStyle = fill_color;
-    context.strokeStyle = stroke_color;
-    context.lineWidth = 3;
-
+export let fill_shape2D = (context:CanvasRenderingContext2D, shape:Shape2D) : CanvasRenderingContext2D => {
+    
     context.beginPath();
     shape.edges.forEach((edge,index) => {
         if(index == 0) context.moveTo(edge.x, edge.y);
@@ -13,7 +10,6 @@ export let fill_shape2D = (context:CanvasRenderingContext2D, shape:Shape2D,fill_
     })
     context.closePath();
 
-    context.fill();
-    context.stroke();
+    shape.material(context);
     return context;
 }

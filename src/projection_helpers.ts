@@ -22,7 +22,7 @@ export let convert_Scene3D_to_Scene2D = (scene:Scene3D,projection_distance:numbe
 
     var scene_2D: Scene2D = [];
     sorted_scene.forEach(shape=>{
-        var shape_2d = Shape2D([]);
+        var shape_2d = Shape2D([],shape.material);
         shape.edges.forEach(edge => {
             var normalized_edge = no_points_behind_projection_plane(edge,projection_distance)
             shape_2d.edges.push(

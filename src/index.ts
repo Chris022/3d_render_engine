@@ -3,18 +3,18 @@ import {fill_shape2D} from "./draw_helpers"
 import { convert_Scene3D_to_Scene2D } from "./projection_helpers";
 import { get_height, get_width, scale_canvas } from "./canvas_helpers";
 import { move_shape3D } from "./shape_helpers";
-import { OutlineMaterialGlow } from "./material_helpers";
+import { OutlineMaterialGlow,OutlineMaterial } from "./material_helpers";
 
 let canvas = document.getElementById("canvas") as HTMLCanvasElement;
 if(!canvas) throw new Error("Canvas is null");
 
 let context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-
+let fix_size = 400;
 function init(){
-    scale_canvas(canvas,context,800);
+    scale_canvas(canvas,context,fix_size);
     window.onresize = () => { 
-        scale_canvas(canvas,context,800);
+        scale_canvas(canvas,context,fix_size);
     }
 }
 let move = 600;
@@ -23,17 +23,17 @@ let move = 600;
 function loop(delta:number){
 
     //Create a simple shape
-    let c_1 = {x:-600,y:-600,z:200-move};
-    let c_2 = {x:0,y:-600,z:200-move};
-    let c_3 = {x:0,y:-600,z:250-move};
-    let c_4 = {x:-600,y:-600,z:250-move};
+    let c_1 = {x:-600,y:-400,z:200-move};
+    let c_2 = {x:0,y:-400,z:200-move};
+    let c_3 = {x:0,y:-400,z:250-move};
+    let c_4 = {x:-600,y:-400,z:250-move};
 
-    let base_square: Shape3D = Shape3D([c_1,c_2,c_3,c_4],OutlineMaterialGlow("#47fffc","black",2,5));
+    let base_square: Shape3D = Shape3D([c_1,c_2,c_3,c_4],OutlineMaterial("#47fffc","black",3));
 
     let scene1: Scene3D = [base_square];
 
 
-    for(var z = 0; z < 25;z++){
+    for(var z = 0; z < 30;z++){
         for(var x = 0; x < 30; x++){
             scene1.push(move_shape3D(move_shape3D(base_square,{x:x*600-15*600,y:0,z:0}),{x:0,y:0,z:z*50}));
         }
@@ -42,7 +42,7 @@ function loop(delta:number){
     //Convert into Shape2D
     let scene2D = convert_Scene3D_to_Scene2D(scene1,100);
 
-    context.clearRect(-get_width(canvas,800)/2, -get_height(canvas,800)/2, get_width(canvas,800), get_height(canvas,800));
+    context.clearRect(-get_width(canvas,fix_size)/2, -get_height(canvas,fix_size)/2, get_width(canvas,fix_size), get_height(canvas,fix_size));
     scene2D.forEach(shape2D =>{
         fill_shape2D(context,shape2D);
     })

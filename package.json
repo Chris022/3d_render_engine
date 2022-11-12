@@ -2,7 +2,6 @@
   "name": "one-point",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "watch": "webpack --watch",
@@ -11,6 +10,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "devDependencies": {
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.4.1",

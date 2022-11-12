@@ -5,7 +5,7 @@ module.exports = {
     devServer: {
         static: './dist',
     },
-    entry: './src/index.ts',
+    entry: './tests/index.ts',
     module: {
         rules: [
             {

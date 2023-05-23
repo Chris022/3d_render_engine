@@ -1,6 +1,6 @@
 // @ts-check
 
-import { init_canvas, draw_scene3D, OutlineMaterial, move_shape3D, Options, Shape3D } from "../src/index.js";
+import { init_canvas, draw_scene3D, OutlineMaterial, move_shape3D, create_Options, create_Shape3D } from "../one-point.js";
 
 
 
@@ -13,7 +13,7 @@ let context = /** @type {CanvasRenderingContext2D} */ (canvas.getContext("2d"));
 
 let fix_size = 400;
 
-let options = Options(fix_size, canvas, context);
+let options = create_Options(fix_size, canvas, context);
 
 function init() {
     init_canvas(options);
@@ -36,7 +36,7 @@ function loop(delta) {
     let c_3 = { x: 0, y: -400, z: 250 - move };
     let c_4 = { x: -600, y: -400, z: 250 - move };
 
-    let base_square = Shape3D([c_1, c_2, c_3, c_4], OutlineMaterial("#47fffc", "black", 3));
+    let base_square = create_Shape3D([c_1, c_2, c_3, c_4], OutlineMaterial("#47fffc", "black", 3));
 
     let scene1 = [base_square];
 

@@ -52,7 +52,7 @@
  * @param {CanvasRenderingContext2D} context
  * @returns {Options}
  */
-export let Options = (fix_size,canvas,context) => {
+export let create_Options = (fix_size,canvas,context) => {
     return {fix_size:fix_size,canvas:canvas,context:context};
 }
 
@@ -63,7 +63,7 @@ export let Options = (fix_size,canvas,context) => {
  * @param {number} z
  * @returns {Point3D}
  */
-export let Point3D = (x,y,z) => {
+export let create_Point3D = (x,y,z) => {
     return {x:x,y:y,z:z}
 }
 
@@ -73,7 +73,7 @@ export let Point3D = (x,y,z) => {
  * @param {Material} material
  * @returns {Shape3D}
  */
-export let Shape3D = (edges,material) => {
+export let create_Shape3D = (edges,material) => {
     return {edges:edges,material:material}
 }
 
@@ -82,7 +82,7 @@ export let Shape3D = (edges,material) => {
  * @param {Shape3D[]} shapes
  * @returns {Scene3D}
  */
-export let Scene3D = (shapes) => {
+export let create_Scene3D = (shapes) => {
     return shapes
 }
 
@@ -92,7 +92,7 @@ export let Scene3D = (shapes) => {
  * @param {number} y
  * @returns {Point2D}
  */
-export let Point2D = (x,y) => {
+export let create_Point2D = (x,y) => {
     return {x:x,y:y}
 }
 
@@ -102,7 +102,7 @@ export let Point2D = (x,y) => {
  * @param {Material} material
  * @returns {Shape2D}
  */
-export let Shape2D = (edges,material) => {
+export let create_Shape2D = (edges,material) => {
     return {edges:edges,material:material}
 }
 
@@ -111,6 +111,6 @@ export let Shape2D = (edges,material) => {
  * @param {Shape2D[]} shapes
  * @returns {Scene2D}
  */
-export let Scene2D = (shapes) => {
+export let create_Scene2D = (shapes) => {
     return shapes
 }

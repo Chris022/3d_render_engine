@@ -1,4 +1,12 @@
-import { Shape2D, Scene3D, Options } from "./types.js";
+// @ts-check
+
+/**
+ * Import types
+ * @typedef {import("./types").Shape2D} Shape2D
+ * @typedef {import("./types").Scene3D} Scene3D
+ * @typedef {import("./types").Options} Options
+ */
+
 import { convert_Scene3D_to_Scene2D } from "./projection_helpers.js";
 import { get_height, get_width } from "./canvas_helpers.js";
 

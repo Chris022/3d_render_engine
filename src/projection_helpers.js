@@ -1,7 +1,16 @@
 // @ts-check
 
+/**
+ * Import types
+ * @typedef {import("./types").Point3D} Point3D
+ * @typedef {import("./types").Point2D} Point2D
+ * @typedef {import("./types").Shape3D} Shape3D
+ * @typedef {import("./types").Scene3D} Scene3D
+ * @typedef {import("./types").Scene2D} Scene2D
+ */
 
-import { Point3D, Point2D, Shape3D, Shape2D, Scene3D, Scene2D } from "./types.js"
+
+import { create_Point3D, create_Point2D, create_Shape3D, create_Shape2D, create_Scene3D, create_Scene2D } from "./types.js"
 
 /**
  * Takes the z position of the projection plane and a 3DPoint and converts it to a 2DPoint on the projection plane
@@ -12,7 +21,7 @@ import { Point3D, Point2D, Shape3D, Shape2D, Scene3D, Scene2D } from "./types.js
 let convert_Point3D_to_Point2D = (point,projection_distance) => {
     let new_y = point.y * projection_distance/point.z;
     let new_x = point.x * projection_distance/point.z;
-    return Point2D(new_x,new_y);
+    return create_Point2D(new_x,new_y);
 }
 
 /**
@@ -67,7 +76,7 @@ export let convert_Scene3D_to_Scene2D = (scene,projection_distance) => {
 
     var scene_2D = [];
     sorted_scene.forEach(shape=>{
-        var shape_2d = Shape2D([],shape.material);
+        var shape_2d = create_Shape2D([],shape.material);
         shape.edges.forEach(edge => {
             var normalized_edge = no_points_behind_projection_plane(edge,projection_distance)
             shape_2d.edges.push(

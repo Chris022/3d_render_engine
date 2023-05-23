@@ -1,4 +1,9 @@
-import { Options } from "./types.js";
+// @ts-check
+
+/**
+ * Import types
+ * @typedef {import("./types").Options} Options
+ */
 
 /**
  * Function that prepares the canvas set in the Options object for drawing a Scene3D

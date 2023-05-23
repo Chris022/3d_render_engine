@@ -1,0 +1,27 @@
+{
+  "name": "one-point",
+  "version": "1.0.0",
+  "description": "A simple - dependency free library for rendering 3D scences with one vanishing point",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "serve-example": "php -S localhost:8080",
+    "combine": "rollup src/index.js --file one-point.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chris022/one-point.git"
+  },
+  "keywords": [
+    "3D",
+    "Rendering"
+  ],
+  "author": "Christoph",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Chris022/one-point/issues"
+  },
+  "homepage": "https://github.com/Chris022/one-point#readme"
+}
